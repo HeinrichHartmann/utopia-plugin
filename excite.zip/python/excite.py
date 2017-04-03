@@ -18,7 +18,7 @@ class EXCITEAnnotator(utopia.document.Annotator):
         arxiv_id = utopialib.utils.metadata(document, 'identifiers[arxiv]')
         if arxiv_id is not None:
             # Simplify the ID and send it to EXCITE
-            arxiv_id = id_re.match(arxiv_id).group(1)
+            arxiv_id = self.id_re.match(arxiv_id).group(1)
             url = 'http://excite-compute.west.uni-koblenz.de:5555/citations/{0}'.format(arxiv_id)
             data = json.load(urllib2.urlopen(url, timeout=10))
 
